@@ -27,7 +27,7 @@
  >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
 
- ![Design Image](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/DesignDocs/PrototypeDesign.png)
+ ![Design Image](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/blob/master/DesignDocs/PrototypeDesign.png)
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
