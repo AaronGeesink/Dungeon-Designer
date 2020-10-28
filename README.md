@@ -1,33 +1,55 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\<"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Tabletop RPG Dungeon Designer
- > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
- 
- > Authors: [Aaron Geesink](https://github.com/roveredpwn), [Garrett Geesink](https://github.com/chatmansave), 
- [Emerson Jacobson](https://github.com/emwjacobson)
- 
- > You will be forming a group of **THREE** students and work on an interesting project that you will propose yourself (in this `README.md` document). You can pick any project that you'd like, but it needs ot implement three design patterns. Each of the members in a group is expected to work on at least one design pattern and its test cases. You can, of course, help each other, but it needs to be clear who will be responsible for which pattern and for which general project features.
- 
- > ## Expectations
- > * Incorporate **three** distinct design patterns, *two* of the design patterns need to be taught in this course:
- >   * Composite, Strategy, Abstract Factory, Visitor
- > * All three design patterns need to be linked together (it can't be three distinct projects)
- > * Your project should be implemented in C/C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
+ > Authors: [Aaron Geesink](https://github.com/roveredpwn), [Garrett Geesink](https://github.com/chatmansave),  [Emerson Jacobson](https://github.com/emwjacobson)
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
- > * What are the three design patterns you will be using. For each design pattern you must:
- >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
- > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
 
- ![Design Image](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/blob/master/DesignDocs/PrototypeDesign.png)
+General Description:
+
+This program is a terminal based dungeon map generation tool for use in tabletop roleplaying games. The user will have two dungeon generations types to choose from: linear dungeon generation that creates a dungeon map that can only be progressed in one direction, or a nonlinear dungeon generation that creates dungeons with branching paths. Each dungeon generation type will also have two options for both simple and complex generation, for a total of four basic dungeon generation options. The user will also have the ability to change other parameters for the dungeon generation, such as the number of rooms or the size of the dungeon. Once the dungeon map is generated, each room within the dungeon will be populated with encounters such as dungeon loot, traps, or enemies. Once all of the dungeon generation parameters are set, the dungeon map will be displayed in ASCII text to the terminal, and the user will be able to view the generated dungeon layout as well as the encounters within each room of the dungeon. The user will then be able to regenerate the encounters within the generated dungeon map or generate a new dungeon altogether if they want another map.
+
+Why it is important:
+
+This project is important for our group because we are all interested in playing tabletop roleplaying games such as Dungeons and Dragons. In these games, the game master overseeing the actions of the game is often tasked with creating game resources for roleplaying fantasy scenarios, including making intricate maps for dungeons that the players will be encountering while playing. Making dungeon maps for Dungeons and Dragons and filling each room in the dungeon with interesting encounters can take a lot of time, so having a way to automate the map generation for dungeons would allow for the game master to focus on the other aspects of game preparation such as creating interesting characters and story. Angular, grid based maps are especially suited for playing in AD&D Second Edition, which is the primary tabletop RPG that two of the project members play.
+
+Languages/Tools/Technologies:
+
+[C++](https://www.cplusplus.com/) - This project will be programmed primarily using C++ 11.
+
+[Visual Studio Code](https://code.visualstudio.com/) - This is a text and code editor that we will use to write and test code in Windows.
+
+[Git](https://git-scm.com/) - Git allows us to make changes to the GitHub repository, either through Linux, or through Windows using Git Bash.
+
+[Valgrind](https://valgrind.org/) - Valgrind is a Linux tool which detects errors and memory management bugs in C++ code. We will use it to fix memory leaks in our code.
+
+[Vim](https://www.vim.org/) - Vim is a text editor that allows us to edit code in Linux.
+
+[Github](https://github.com/) - GitHub is a version control system that allows multiple users to share and edit code together online, as well as manage the development of the project with a collection of Agile tools. Github allows for the creation of task boards to sort features into “To-do, doing, done” categories to organize the implementation of program features between multiple group members.
+
+[Visio](https://www.microsoft.com/en-us/microsoft-365/visio/) - Visio is Microsoft’s diagram and flowchart design software. We will use it to make UML class diagrams and other program diagrams for our project.
+
+[CMake](https://cmake.org/) - CMake is a Linux tool which allows us to compile C++ code into executable programs that will run in Linux.
+
+[Google Test Framework](https://github.com/google/googletest) - This is a collection of tools made by Google which will allow us to create and run test cases for our project code. This will allow us to test the functionality and edge cases for our program and ensure that all program inputs have the intended outputs.
+
+Program inputs/outputs:
+
+Inputs - The user-specified parameters that will be used to generate a dungeon layout. The user will be able to specify the size of the dungeon map, the types of encounters in the dungeon rooms, the type of dungeon to generate, and the algorithm to generate a dungeon of that type. In addition, once a dungeon has been generated, the user will be able to specify a number of options to modify that dungeon, such as regenerating the encounters, regenerating a dungeon with the same parameters, or changing the parameters of the current dungeon. The user will also have the option to delete the current dungeon and generate a new dungeon with different parameters. If possible, we would like to add the ability for the user to save dungeon layouts that they have generated, and load these dungeon layouts back into the program.
+
+Outputs - The program will use the user-specified parameters to randomly generate a dungeon with those parameters. The objects of a dungeon will be stored within a 2-dimensional data structure such as a vector after it is generated. The program will also visually output the layout of the generated dungeon to the screen using ASCII characters.
+
+Program Design Patterns:
+
+The three design patterns we will be using for this project are Abstract Factory, Strategy, and Singleton.
+
+The Abstract Factory design pattern will be used for the Dungeon class to construct different implementations of our dungeon. A dungeon will be generated based on a collection of user-specified parameters, and the behavior of the dungeon generation algorithm will be determined at runtime based on these parameters. A dungeon can differ by a number of parameters, such as size, number of rooms, number of encounters and types of encounters, as well as different types of dungeons and dungeon generation algorithms. By using the Abstract Factory design pattern, we will not have to determine the behavior of the dungeon generation ahead of time, and instead build the behavior at runtime from the user-provided parameters. Aaron Geesink will be responsible for this design pattern.
+
+The Strategy design pattern will be used for the dungeon generation algorithms to choose between different algorithms to generate the dungeons. Each of the types of dungeon layouts will have more than one algorithm to generate dungeons of that type. For example, we can specify a linear dungeon, with rooms that extend in a straight line, and we can develop multiple algorithms for generating linear dungeons. A simple linear dungeon algorithm would generate a simple dungeon with one straight path through each of its rooms, while a complex linear dungeon algorithm would generate a straight dungeon with branching paths between its rooms. This applies to other dungeon types as well. A non-linear dungeon will have a simple algorithm and a complex algorithm that will allow for the ability to create different dungeons of the same type. Jacob Emerson will be responsible for this design pattern.
+
+The Singleton design pattern will be used for the Dungeon class, as we only want to create one dungeon at any given moment. We will be able to modify that dungeon in order to produce different dungeon layouts using the same dungeon object. For example, we will have the option to regenerate the contents of each of the dungeon rooms, or generate a new dungeon using the same parameters. Singleton is useful in this case because it allows us to keep using a dungeon layout until the user decides to generate an entirely new dungeon with different parameters. Garrett Geesink will be responsible for this design pattern.
+
+Here is a rough prototype picture for the design of the dungeons:
+
+ ![Design Prototype Image](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/blob/master/DesignDocs/PrototypeDesign.png)
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
