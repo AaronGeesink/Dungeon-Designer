@@ -3,15 +3,15 @@
 
 ## Project Description
 
-General Description:
+#### General Description:
 
 This program is a terminal based dungeon map generation tool for use in tabletop roleplaying games. The user will have two dungeon generations types to choose from: linear dungeon generation that creates a dungeon map that can only be progressed in one direction, or a nonlinear dungeon generation that creates dungeons with branching paths. Each dungeon generation type will also have two options for both simple and complex generation, for a total of four basic dungeon generation options. The user will also have the ability to change other parameters for the dungeon generation, such as the number of rooms or the size of the dungeon. Once the dungeon map is generated, each room within the dungeon will be populated with encounters such as dungeon loot, traps, or enemies. Once all of the dungeon generation parameters are set, the dungeon map will be displayed in ASCII text to the terminal, and the user will be able to view the generated dungeon layout as well as the encounters within each room of the dungeon. The user will then be able to regenerate the encounters within the generated dungeon map or generate a new dungeon altogether if they want another map.
 
-Why it is important:
+#### Why it is important:
 
 This project is important for our group because we are all interested in playing tabletop roleplaying games such as Dungeons and Dragons. In these games, the game master overseeing the actions of the game is often tasked with creating game resources for roleplaying fantasy scenarios, including making intricate maps for dungeons that the players will be encountering while playing. Making dungeon maps for Dungeons and Dragons and filling each room in the dungeon with interesting encounters can take a lot of time, so having a way to automate the map generation for dungeons would allow for the game master to focus on the other aspects of game preparation such as creating interesting characters and story. Angular, grid based maps are especially suited for playing in AD&D Second Edition, which is the primary tabletop RPG that two of the project members play.
 
-Languages/Tools/Technologies:
+#### Languages/Tools/Technologies:
 
 [C++](https://www.cplusplus.com/) - This project will be programmed primarily using C++ 11.
 
@@ -31,13 +31,13 @@ Languages/Tools/Technologies:
 
 [Google Test Framework](https://github.com/google/googletest) - This is a collection of tools made by Google which will allow us to create and run test cases for our project code. This will allow us to test the functionality and edge cases for our program and ensure that all program inputs have the intended outputs.
 
-Program inputs/outputs:
+#### Program inputs/outputs:
 
 Inputs - The user-specified parameters that will be used to generate a dungeon layout. The user will be able to specify the size of the dungeon map, the types of encounters in the dungeon rooms, the type of dungeon to generate, and the algorithm to generate a dungeon of that type. In addition, once a dungeon has been generated, the user will be able to specify a number of options to modify that dungeon, such as regenerating the encounters, regenerating a dungeon with the same parameters, or changing the parameters of the current dungeon. The user will also have the option to delete the current dungeon and generate a new dungeon with different parameters. If possible, we would like to add the ability for the user to save dungeon layouts that they have generated, and load these dungeon layouts back into the program.
 
 Outputs - The program will use the user-specified parameters to randomly generate a dungeon with those parameters. The objects of a dungeon will be stored within a 2-dimensional data structure such as a vector after it is generated. The program will also visually output the layout of the generated dungeon to the screen using ASCII characters.
 
-Program Design Patterns:
+#### Program Design Patterns:
 
 The three design patterns we will be using for this project are Abstract Factory, Strategy, and Singleton.
 
