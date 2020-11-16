@@ -64,7 +64,7 @@ Here is a rough prototype picture for the design of the dungeons:
  >   * Create smaller development tasks as issues and assign them to team members. Place these in the `Backlog` column.
  >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
- ![OMT Class Diagram](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/blob/master/DesignDocs/OMTClassDiagram.png)
+ ![OMT Class Diagram](DesignDocs/OMTClassDiagram.png)
 
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
  
