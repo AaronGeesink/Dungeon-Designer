@@ -25,7 +25,7 @@ This project is important for our group because we are all interested in playing
 
 [Github](https://github.com/) - GitHub is a version control system that allows multiple users to share and edit code together online, as well as manage the development of the project with a collection of Agile tools. Github allows for the creation of task boards to sort features into “To-do, doing, done” categories to organize the implementation of program features between multiple group members.
 
-[Visio](https://www.microsoft.com/en-us/microsoft-365/visio/) - Visio is Microsoft’s diagram and flowchart design software. We will use it to make UML class diagrams and other program diagrams for our project.
+[Lucidchart](https://www.lucidchart.com/) - Lucidchart is a free cloud based diagram and flowchart design software. We will use it to make OMT class diagrams and other program diagrams for our project.
 
 [CMake](https://cmake.org/) - CMake is a Linux tool which allows us to compile C++ code into executable programs that will run in Linux.
 
@@ -41,15 +41,17 @@ Outputs - The program will use the user-specified parameters to randomly generat
 
 The three design patterns we will be using for this project are Abstract Factory, Strategy, and Singleton.
 
-The Abstract Factory design pattern will be used for the Dungeon class to construct different implementations of our dungeon. A dungeon will be generated based on a collection of user-specified parameters, and the behavior of the dungeon generation algorithm will be determined at runtime based on these parameters. A dungeon can differ by a number of parameters, such as size, number of rooms, number of encounters and types of encounters, as well as different types of dungeons and dungeon generation algorithms. By using the Abstract Factory design pattern, we will not have to determine the behavior of the dungeon generation ahead of time, and instead build the behavior at runtime from the user-provided parameters. Aaron Geesink will be responsible for this design pattern.
+The Abstract Factory design pattern will be used to generate a variety of different Encounters for our dungeon. Each room in our dungeon can have one of three types of encounters: an enemy, a trap, or loot. For each of these types of encounters, there will be a variety of factors that can be different. For example, an enemy encounter could be 3 Skeletons, 4 Large Spiders, 2 Skeletons and 3 Zombies. Each of the different types of encounters will have a list of elements to choose from, and these elements will be put together to create an Encounter class object of the specified encounter type.  Using the abstract factory design pattern means that we will not need to determine the exact nature of these encounters ahead of time, and instead we will be able to build the encounters dynamically at runtime. Jacob Emerson will be responsible for this design pattern.
 
-The Strategy design pattern will be used for the dungeon generation algorithms to choose between different algorithms to generate the dungeons. Each of the types of dungeon layouts will have more than one algorithm to generate dungeons of that type. For example, we can specify a linear dungeon, with rooms that extend in a straight line, and we can develop multiple algorithms for generating linear dungeons. A simple linear dungeon algorithm would generate a simple dungeon with one straight path through each of its rooms, while a complex linear dungeon algorithm would generate a straight dungeon with branching paths between its rooms. This applies to other dungeon types as well. A non-linear dungeon will have a simple algorithm and a complex algorithm that will allow for the ability to create different dungeons of the same type. Jacob Emerson will be responsible for this design pattern.
+The Strategy design pattern will be used for the dungeon generation algorithms to choose between different algorithms to generate the dungeons. There are three different algorithms to choose from when generating a dungeon: a LinearDungeon algorithm, a BranchingDungeon algorithm, and a GriddedDungeon algorithm. The LinearDungeon algorithm will generate a dungeon consisting of a straight line of rooms. The BranchingDungeon algoriuthm will create a dungeon similar to a linear dungeon, with a straight line of rooms, but some rooms have additional rooms above or below it, creating a branching path of rooms to traverse through. The GriddedDungeon algorithm will generate a dungeon which contains adjacent rooms connected in a nonlinear fashion, resembling a dungeon from games such as the orignal Legend of Zelda or the Binding of Isaac. Garrett Geesink will be responsible for this design pattern.
 
-The Singleton design pattern will be used for the Dungeon class, as we only want to create one dungeon at any given moment. We will be able to modify that dungeon in order to produce different dungeon layouts using the same dungeon object. For example, we will have the option to regenerate the contents of each of the dungeon rooms, or generate a new dungeon using the same parameters. Singleton is useful in this case because it allows us to keep using a dungeon layout until the user decides to generate an entirely new dungeon with different parameters. Garrett Geesink will be responsible for this design pattern.
+The Singleton design pattern will be used for the Dungeon class, as we only want to create one dungeon at any given moment. We will be able to modify that dungeon in order to produce different dungeon layouts using the same dungeon object. For example, we will have the option to regenerate the contents of each of the dungeon rooms, or generate a new dungeon using the same parameters. Singleton is useful in this case because it allows us to keep using a dungeon layout until the user decides to generate an entirely new dungeon with different parameters. Aaron Geesink will be responsible for this design pattern.
 
 Here is a rough prototype picture for the design of the dungeons:
 
  ![Design Prototype Image](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/blob/master/DesignDocs/PrototypeDesign.png)
+
+ Example of the Menu Design can be found within the Design Documents
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
@@ -62,6 +64,8 @@ Here is a rough prototype picture for the design of the dungeons:
  >   * Create smaller development tasks as issues and assign them to team members. Place these in the `Backlog` column.
  >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
+ ![OMT Class Diagram](https://github.com/cs100/final-project-agees001-ggees001-ejaco020/blob/master/DesignDocs/OMTClassDiagram.png)
+
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
  
  > ## Phase III
