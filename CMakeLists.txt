@@ -6,7 +6,7 @@ ADD_SUBDIRECTORY(googletest)
 SET(CMAKE_CXX_STANDARD 11)
 
 ADD_EXECUTABLE(test
-   _unit_tests.cpp
+  tests/_unit_tests.cpp
 )
 
 ADD_EXECUTABLE(dungeondesigner

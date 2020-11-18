@@ -3,9 +3,9 @@
 
 #include "gtest/gtest.h"
 
-#include "src/factory/room.cpp"
+#include "../header/factory/room.hpp"
 
-TEST(RoomTest, SubEvaluateNonZero) {
+TEST(RoomTest, RoomGetEncounter) {
     Room* room = new Room(1);
 	EXPECT_EQ(room->getEncounter(), "Encounters have not been implemented.");
 }
