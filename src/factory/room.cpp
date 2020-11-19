@@ -2,6 +2,7 @@
 #define ROOM_CPP
 
 #include <stdlib.h>
+#include "../../header/factory/room.hpp"
 
 Room::Room(int id) : id(id) {
     this->generateEncounter();
