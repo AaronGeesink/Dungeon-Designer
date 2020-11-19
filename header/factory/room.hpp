@@ -15,4 +15,6 @@ public:
     std::string getEncounter();
 };
 
+#include "../../src/factory/room.cpp"
+
 #endif // ROOM_HPP

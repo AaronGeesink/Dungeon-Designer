@@ -3,8 +3,7 @@
 
 #include "gtest/gtest.h"
 
-//#include "../header/factory/room.hpp"
-#include "../src/factory/room.cpp"
+#include "../header/factory/room.hpp"
 
 TEST(RoomTest, GetEncounterNotEmpty) {
     Room* room = new Room(1);
