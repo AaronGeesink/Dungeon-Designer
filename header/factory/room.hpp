@@ -9,10 +9,10 @@ private:
     int id;
     //Encounter encounter;
 public:
-    Room(int id) : id(id) {};
+    Room(int id);
     ~Room();
     void generateEncounter();
     std::string getEncounter();
 };
 
-#endif
+#endif // ROOM_HPP
