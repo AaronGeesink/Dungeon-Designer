@@ -1,7 +1,7 @@
 #ifndef ROOM_CPP
 #define ROOM_CPP
 
-#include "./../../header/factory/room.hpp"
+#include "../../header/factory/room.hpp"
 
 Room::~Room() {
     // TODO
