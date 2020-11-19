@@ -9,7 +9,7 @@
 TEST(RoomTest, GetEncounterNotEmpty) {
     Room* room = new Room(1);
 
-	EXPECT_NE(room->getEncounter(), "");
+    EXPECT_NE(room->getEncounter(), "");
 
     delete room;
 }
@@ -17,7 +17,7 @@ TEST(RoomTest, GetEncounterNotEmpty) {
 TEST(RoomTest, GenEncounterNoThrow) {
     Room* room = new Room(1);
     
-	EXPECT_NO_THROW(room->generateEncounter());
+    EXPECT_NO_THROW(room->generateEncounter());
 
     delete room;
 }
