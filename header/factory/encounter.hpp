@@ -5,7 +5,7 @@
 
 class Encounter
 {
-private:
+protected:
     std::string encounter_name;
 public:
     Encounter(std::string name) : encounter_name(name) {};
