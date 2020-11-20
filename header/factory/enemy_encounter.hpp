@@ -7,7 +7,7 @@
 #include "./encounter.hpp"
 #include "./enemy.hpp"
 
-class EnemyEncounter : Encounter
+class EnemyEncounter : public Encounter
 {
 private:
     std::vector<std::pair<Enemy*, int>*> enemies;
