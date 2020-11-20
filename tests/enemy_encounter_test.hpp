@@ -14,7 +14,8 @@ TEST(EnemyEncounterTest, EnemyGetEncounterNotEmpty) {
 
 TEST(EnemyEncounterTest, EnemyGetEncounterHasEnemy) {
     EnemyEncounter* enemy = new EnemyEncounter();
-	EXPECT_THAT(enemy->getEncounter(), ::testing::HasSubstr("Enemy"));
+	EXPECT_THAT(enemy->getEncounter(), ::testing::HasSubstr("There are"));
+	EXPECT_THAT(enemy->getEncounter(), ::testing::HasSubstr("health"));
     delete enemy;
 }
 
