@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <utility>
+#include <vector>
 #include "../../header/factory/enemy_encounter.hpp"
 
 const int MAX_ENEMIES = 3;
@@ -17,6 +18,8 @@ EnemyEncounter::EnemyEncounter() {
     }
 }
 
+EnemyEncounter::EnemyEncounter(std::vector<std::pair<Enemy*, int>*> enemies) : enemies(enemies) {}
+
 EnemyEncounter::~EnemyEncounter() {
     for(auto enemy : this->enemies) {
         delete enemy->first;
@@ -26,11 +29,16 @@ EnemyEncounter::~EnemyEncounter() {
 
 std::string EnemyEncounter::getEncounter() {
     std::stringstream rtn;
+    // Enemy Encounter
+    //      3 pirates with 20 health.
+    //      9 skeletons with 55 health.
+    rtn << "Enemy Encounter!" << std::endl;
     for (int i = 0; i < this->enemies.size(); i++) {
         std::pair<Enemy*, int>* p = this->enemies[i];
-        // There are 3 pirates with 20 health.
-        // There are 9 skeletons with 55 health.
-        rtn << "There are " << p->second << " " << p->first->getName() << "s with " << p->first->getHealth() << " health." << std::endl;
+        rtn << "\t" << p->second << " " << p->first->getName() << "s with " << p->first->getHealth() << " health.";
+
+        if (i != this->enemies.size() - 1)
+            rtn << std::endl;
     }
     return rtn.str();
 }

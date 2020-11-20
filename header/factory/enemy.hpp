@@ -10,6 +10,7 @@ private:
     int health;
 public:
     Enemy();
+    Enemy(std::string name, int health);
     ~Enemy();
     std::string getName();
     int getHealth();

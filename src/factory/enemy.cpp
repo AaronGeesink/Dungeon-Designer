@@ -21,6 +21,11 @@ Enemy::Enemy() {
     this->health = (rand() % MAX_HEALTH) + 1;
 }
 
+Enemy::Enemy(std::string name, int health) {
+    this->enemy_name = name;
+    this->health = health;
+}
+
 Enemy::~Enemy() {}
 
 std::string Enemy::getName() {

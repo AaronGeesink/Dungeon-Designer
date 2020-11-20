@@ -13,6 +13,7 @@ private:
     std::vector<std::pair<Enemy*, int>*> enemies;
 public:
     EnemyEncounter();
+    EnemyEncounter(std::vector<std::pair<Enemy*, int>*> enemies);
     ~EnemyEncounter();
     std::string getEncounter();
 };
