@@ -14,4 +14,5 @@ ADD_EXECUTABLE(dungeondesigner
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
+TARGET_LINK_LIBRARIES(test gmock)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)

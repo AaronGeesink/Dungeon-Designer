@@ -8,7 +8,7 @@
 TEST(RoomTest, GetEncounterNotEmpty) {
     Room* room = new Room(1);
 
-    EXPECT_NE(room->getEncounter(), "");
+    EXPECT_NE(room->getRoom(), "");
 
     delete room;
 }
