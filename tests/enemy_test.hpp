@@ -8,7 +8,7 @@
 TEST(EnemyTest, NonEmptyName) {
     Enemy* enemy = new Enemy();
 
-    ASSERT_NE(enemy->getName(), "");
+    EXPECT_NE(enemy->getName(), "");
 
     delete enemy;
 }
@@ -16,7 +16,16 @@ TEST(EnemyTest, NonEmptyName) {
 TEST(EnemyTest, NonZeroHealth) {
     Enemy* enemy = new Enemy();
 
-    ASSERT_GT(enemy->getHealth(), 0);
+    EXPECT_GT(enemy->getHealth(), 0);
+
+    delete enemy;
+}
+
+TEST(EnemyTest, SetValues) {
+    Enemy* enemy = new Enemy("Foo", 20);
+
+    EXPECT_EQ(enemy->getHealth(), 20);
+    EXPECT_EQ(enemy->getName(), "Foo");
 
     delete enemy;
 }
