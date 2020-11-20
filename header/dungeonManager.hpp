@@ -2,7 +2,10 @@
 #define DUNGEON_MANAGER_HPP
 
 #include <iostream>
-using std::iostream;
+#include <string>
+using std::cin;
+using std::cout;
+using std::string;
 
 class DungeonManager {
 	private:
@@ -12,5 +15,6 @@ class DungeonManager {
 		void displayMainMenu();
 };
 
+#include "../src/dungeonManager.cpp"
 
 #endif //DUNGEON_MANAGER_HPP
