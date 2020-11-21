@@ -6,6 +6,7 @@
 class Encounter
 {
 public:
+    virtual ~Encounter() {};
     virtual std::string getEncounter() = 0;
 };
 
