@@ -6,7 +6,7 @@
 #include "../../header/factory/loot.hpp"
 
 const std::vector<std::string> possible_loot {
-    "Gold",
+    "Gold Piece",
     "Sword",
     "Bow",
     "Arrow",
