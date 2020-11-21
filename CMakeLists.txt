@@ -13,8 +13,9 @@ SET(CMAKE_CXX_STANDARD 11)
 
 add_library(dungeon_lib STATIC
   src/factory/enemy_encounter.cpp
-  src/factory/enemy.cpp
   src/factory/room.cpp
+  src/factory/enemy.cpp
+  src/factory/loot.cpp
 )
 
 target_include_directories(dungeon_lib
