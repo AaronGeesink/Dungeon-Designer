@@ -2,6 +2,7 @@
 #define DUNGEON_MANAGER_HPP
 
 #include <iostream>
+#include <string>
 #include <limits>
 
 class DungeonManager {
@@ -10,6 +11,9 @@ class DungeonManager {
 	public:
 		DungeonManager();
 		void displayMainMenu();
+		void displayGenerationMenu();
+		void displayDungeonDisplayMenu();
+		void clearScreen();
 };
 
 #include "../src/dungeonManager.cpp"
