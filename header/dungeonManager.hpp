@@ -2,10 +2,7 @@
 #define DUNGEON_MANAGER_HPP
 
 #include <iostream>
-#include <string>
-using std::cin;
-using std::cout;
-using std::string;
+#include <limits>
 
 class DungeonManager {
 	private:
