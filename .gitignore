@@ -1,5 +1,7 @@
 build/
 .vscode/
+.vs/
+libdungeon_lib.a
 
 CMakeCache.txt
 CMakeFiles/
@@ -8,4 +10,3 @@ cmake_install.cmake
 dungeondesigner
 test
 lib/
-
