@@ -16,6 +16,4 @@ public:
     std::string getRoom();
 };
 
-#include "../../src/factory/room.cpp"
-
 #endif // ROOM_HPP

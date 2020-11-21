@@ -16,6 +16,4 @@ public:
     int getHealth();
 };
 
-#include "../../src/factory/enemy.cpp"
-
 #endif // ENEMY_HPP
