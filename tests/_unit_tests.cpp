@@ -5,6 +5,7 @@
 #include "enemy_encounter_test.hpp"
 #include "enemy_test.hpp"
 #include "loot_test.hpp"
+#include "loot_encounter_test.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
