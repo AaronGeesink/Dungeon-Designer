@@ -18,6 +18,4 @@ public:
     std::string getEncounter();
 };
 
-#include "../../src/factory/enemy_encounter.cpp"
-
 #endif // ENEMY_ENCOUNTER_HPP
