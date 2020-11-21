@@ -4,8 +4,9 @@
 #include <vector>
 #include <utility>
 #include "./loot.hpp"
+#include "./encounter.hpp"
 
-class LootEncounter
+class LootEncounter : public Encounter
 {
 private:
     std::vector<std::pair<Loot*, int>*> items;
