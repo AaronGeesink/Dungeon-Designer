@@ -1,4 +1,7 @@
 build/
+.vscode/
+.vs/
+libdungeon_lib.a
 
 CMakeCache.txt
 CMakeFiles/

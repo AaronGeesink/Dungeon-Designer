@@ -5,13 +5,39 @@ ADD_SUBDIRECTORY(googletest)
 
 SET(CMAKE_CXX_STANDARD 11)
 
+# Example adapted from https://github.com/ttroy50/cmake-examples/tree/master/01-basic/C-static-library
+
+####################
+# Make the library #
+####################
+
+add_library(dungeon_lib STATIC
+  src/factory/enemy_encounter.cpp
+  src/factory/enemy.cpp
+  src/factory/room.cpp
+)
+
+target_include_directories(dungeon_lib
+  PUBLIC 
+    ${PROJECT_SOURCE_DIR}/header
+)
+
+########################
+# Make the executables #
+########################
+
 ADD_EXECUTABLE(test
   tests/_unit_tests.cpp
 )
 
 ADD_EXECUTABLE(dungeondesigner
-   main.cpp
+  main.cpp
 )
 
+# Link our dungeon_lib to our dungeondesigner and test
+TARGET_LINK_LIBRARIES(dungeondesigner dungeon_lib)
+TARGET_LINK_LIBRARIES(test dungeon_lib)
+
 TARGET_LINK_LIBRARIES(test gtest)
+TARGET_LINK_LIBRARIES(test gmock)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)

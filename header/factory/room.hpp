@@ -2,19 +2,18 @@
 #define ROOM_HPP
 
 #include <string>
+#include "./encounter.hpp"
 
 class Room
 {
 private:
     int id;
-    //Encounter encounter;
+    Encounter* encounter;
 public:
     Room(int id);
     ~Room();
     void generateEncounter();
-    std::string getEncounter();
+    std::string getRoom();
 };
-
-#include "../../src/factory/room.cpp"
 
 #endif // ROOM_HPP
