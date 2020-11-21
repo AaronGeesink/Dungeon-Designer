@@ -16,6 +16,4 @@ class DungeonManager {
 		void clearScreen();
 };
 
-#include "../src/dungeonManager.cpp"
-
 #endif //DUNGEON_MANAGER_HPP

@@ -10,4 +10,3 @@ cmake_install.cmake
 dungeondesigner
 test
 lib/
-.vs/
