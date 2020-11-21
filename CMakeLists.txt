@@ -15,6 +15,7 @@ add_library(dungeon_lib STATIC
   src/factory/enemy_encounter.cpp
   src/factory/enemy.cpp
   src/factory/room.cpp
+  src/dungeon_manager.cpp
 )
 
 target_include_directories(dungeon_lib
