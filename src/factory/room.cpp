@@ -18,8 +18,7 @@ Room::~Room() {
 
 void Room::generateEncounter() {
     // TODO: Finish implementation once AbstractFactory for encounters has been finished
-    if (this->encounter != nullptr) delete this->encounter;
-    this->encounter = new EnemyEncounter();
+    delete this->encounter;
 
     int encounter_type = rand() % 3;
     // AbstractEncounterFactory factory = nullptr;
@@ -44,6 +43,7 @@ void Room::generateEncounter() {
     // if (factory == nullptr) throw -1;
 
     // this->encounter = factory.genEncounter();
+    this->encounter = new EnemyEncounter();
 }
 
 std::string Room::getRoom() {
