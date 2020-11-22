@@ -246,10 +246,12 @@ MatrixGraph<T>::MatrixGraph(int graphSize)
 template <typename T>
 MatrixGraph<T>::MatrixGraph(T elements[], int arraySize, int graphSize)
 {
-    // Should probably throw an exception if graphSize is negative,
+    // Should probably throw an exception if graphSize or arraySize are negative,
     // but we just set it to 0 and forget about it
     if (graphSize < 0)
         graphSize = 0;
+    if (arraySize < 0)
+        arraySize = 0;
 
     this->maxSize = graphSize;
     if (arraySize > graphSize)
@@ -260,11 +262,6 @@ MatrixGraph<T>::MatrixGraph(T elements[], int arraySize, int graphSize)
     {
         this->numVertices = arraySize;
     }
-
-    // Should probably throw an exception if arraySize is negative,
-    // but we just set it to 0 and forget about it
-    if (numVertices < 0)
-        numVertices = 0;
 
     vertices = new Vertex<T>[maxSize];
     adj = new int*[maxSize];
@@ -292,7 +289,7 @@ MatrixGraph<T>::MatrixGraph(T elements[], int arraySize, int graphSize)
 template<typename T>
 MatrixGraph<T>::~MatrixGraph()
 {
-	for (int i = 0; i < numVertices; i++)
+	for (int i = 0; i < maxSize; i++)
 	{
 		delete[] adj[i];
 	}
@@ -321,7 +318,7 @@ inline int MatrixGraph<T>::getMaxSize()
 template<typename T>
 inline void MatrixGraph<T>::clear()
 {
-	for (int i = 0; i < numVertices; i++)
+	for (int i = 0; i < maxSize; i++)
 	{
 		delete[] adj[i];
 	}

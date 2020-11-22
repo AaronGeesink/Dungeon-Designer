@@ -66,13 +66,14 @@ TEST(GraphTest, SingleParameterConstructorTest) {
 
 TEST(GraphTest, NegativeSingleParameterConstructorTest) {
     MatrixGraph<int> graph(-1);
-
+    
     std::string test = "Here is the adjacency matrix:\n"
         " id \n";
 
     EXPECT_EQ(graph.displayGraph(), test);
     EXPECT_EQ(graph.getSize(), 0);
     EXPECT_EQ(graph.getMaxSize(), 0);
+    
 }
 
 TEST(GraphTest, SameSizeInitializationTest) {
