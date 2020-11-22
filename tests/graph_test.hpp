@@ -65,8 +65,14 @@ TEST(GraphTest, SingleParameterConstructorTest) {
 }
 
 TEST(GraphTest, NegativeSingleParameterConstructorTest) {
+    MatrixGraph<int> graph(-1);
 
-    ASSERT_ANY_THROW(MatrixGraph<int> graph(-1));
+    std::string test = "Here is the adjacency matrix:\n"
+        " id \n";
+
+    EXPECT_EQ(graph.displayGraph(), test);
+    EXPECT_EQ(graph.getSize(), 0);
+    EXPECT_EQ(graph.getMaxSize(), 0);
 }
 
 TEST(GraphTest, SameSizeInitializationTest) {
@@ -99,12 +105,26 @@ TEST(GraphTest, NegativeArrayInitializationTest) {
 
 TEST(GraphTest, NegativeGraphInitializationTest) {
     int numbers[5] = { 1,2,3,4,5 };
-    ASSERT_ANY_THROW(MatrixGraph<int> graph(numbers, 5, -1));
+    MatrixGraph<int> graph(numbers, 5, -1);
+
+    std::string test = "Here is the adjacency matrix:\n"
+        " id \n";
+
+    EXPECT_EQ(graph.getSize(), 0);
+    EXPECT_EQ(graph.getMaxSize(), 0);
+    EXPECT_EQ(graph.displayGraph(), test);
 }
 
 TEST(GraphTest, BothNegativeInitializationTest) {
     int numbers[5] = { 1,2,3,4,5 };
-    ASSERT_ANY_THROW(MatrixGraph<int> graph(numbers, -1, -1));
+    MatrixGraph<int> graph(numbers, -1, -1);
+
+    std::string test = "Here is the adjacency matrix:\n"
+        " id \n";
+
+    EXPECT_EQ(graph.getSize(), 0);
+    EXPECT_EQ(graph.getMaxSize(), 0);
+    EXPECT_EQ(graph.displayGraph(), test);
 }
 
 TEST(GraphTest, BiggerGraphThanArrayInitializationTest) {

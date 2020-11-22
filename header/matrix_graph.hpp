@@ -219,6 +219,11 @@ MatrixGraph<T>::MatrixGraph()
 template <typename T>
 MatrixGraph<T>::MatrixGraph(int graphSize)
 {
+    // Should probably throw an exception if graphSize is negative,
+    // but we just set it to 0 and forget about it
+    if (graphSize < 0)
+        graphSize = 0;
+
     this->maxSize = graphSize;
     this->numVertices = 0;
 
@@ -241,6 +246,11 @@ MatrixGraph<T>::MatrixGraph(int graphSize)
 template <typename T>
 MatrixGraph<T>::MatrixGraph(T elements[], int arraySize, int graphSize)
 {
+    // Should probably throw an exception if graphSize is negative,
+    // but we just set it to 0 and forget about it
+    if (graphSize < 0)
+        graphSize = 0;
+
     this->maxSize = graphSize;
     if (arraySize > graphSize)
     {
@@ -251,7 +261,7 @@ MatrixGraph<T>::MatrixGraph(T elements[], int arraySize, int graphSize)
         this->numVertices = arraySize;
     }
 
-    // we should probably throw an exception if arraySize is negative,
+    // Should probably throw an exception if arraySize is negative,
     // but we just set it to 0 and forget about it
     if (numVertices < 0)
         numVertices = 0;
