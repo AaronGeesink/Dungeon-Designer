@@ -77,8 +77,9 @@ template <typename T>
 class MatrixGraph 
 {
 private:
-	int numVertices;	/// Number of vertex
-	int** adj;	/// Adjacency matrix
+	int numVertices;	/// Number of vertices on the graph
+    int maxSize;    // The total number of vertices possible before the graph needs to expand
+	int** adj;	/// Adjacency matrix of edge connection
 	Vertex<T>* vertices;	/// Vertices of the graph
 	vector<pair<double,pair<int, int>>> edges;	/// ids for the graph's edges
 
@@ -86,13 +87,28 @@ private:
 	void DFSDriver(T start, vector<bool> &visited, std::vector<Edge<T>>& discoveryEdges, int counter = 0);
 
 public:
+    /**
+     * @author Aaron Geesink
+     * @brief MatrixGraph()
+     * Default constructor to create a graph of of maxSize 0
+     */
+    MatrixGraph();
+
+    /**
+     * @author Aaron Geesink
+     * @brief MatrixGraph(int graphSize)
+     * Constructor to create a graph of of maxSize = graphSize
+     * @param int graphSize
+     */
+    MatrixGraph(int graphSize);
+
 	/**
 	 * @author Aaron Geesink
-	 * @brief MatrixGraph(T elements[], int size)
-	 * Constructor to create the initial adjacency matrix
-	 * @param T elements[], int size
+	 * @brief MatrixGraph(T elements[], int arraySize, int graphSize)
+	 * Constructor to pass in an array of T object and add them as vertices
+	 * @param T elements[], int arraySize, int graphSize
 	 */
-    MatrixGraph(T elements[], int size);
+    MatrixGraph(T elements[], int arraySize, int graphSize);
 
 	/**
 	 * @author Aaron Geesink
@@ -103,10 +119,17 @@ public:
 
     /**
      * @author Aaron Geesink
-     * @brief displayGraph()
-     * Function to return the number of nodes in the graph.
+     * @brief getSize()
+     * Function to return the number of vertices in the graph.
      */
-    int size() { return numVertices; }
+    int getSize();
+
+    /**
+     * @author Aaron Geesink
+     * @brief getMaxSize()
+     * Function to return the total number of vertices possible in the graph be it needs to expand.
+     */
+    int getMaxSize();
 
     /**
      * @author Aaron Geesink
@@ -117,22 +140,22 @@ public:
 
 	/**
 	 * @author Aaron Geesink
-	 * @brief addEdge(T start, T end, double weight)
+	 * @brief addEdge(int startIndex, int endIndex, double weight)
 	 * Function to insert a new edge
-	 * @param T start, T end, double weight
+	 * @param int startIndex, int endIndex, double weight
 	 */
     void addEdge(int startIndex, int endIndex, double weight = 1);
 
     /**
      * @author Aaron Geesink
      * @brief addVertex(T vertex)
-     * function to expand the graph by 1 and insert a new edge
+     * function to insert a new edge and expand the graph if its max size is too small
      */
     void addVertex(T vertex);
 
     /**
      * @author Aaron Geesink
-     * @brief getNode(in index)
+     * @brief getNode(int index)
      * Function to return a node object in the graph.
      * Index locations start at 0.
      */
@@ -181,22 +204,84 @@ public:
 	std::vector<Edge<T>> kruskalMST();
 };
 
-// Constructor to fill the empty adjacency matrix
+// No parameter constructor to create a graph of maxSize 0
 template <typename T>
-MatrixGraph<T>::MatrixGraph(T elements[], int size)
+MatrixGraph<T>::MatrixGraph()
 {
-    this->numVertices = size;
-    vertices = new Vertex<T>[size];
-    adj = new int*[numVertices];
-    for (int row = 0; row < numVertices; row++)
+    this->maxSize = 0;
+    this->numVertices = 0;
+
+    vertices = new Vertex<T>[0];
+    adj = new int* [0];
+}
+
+// Constructor to create a graph of of maxSize = graphSize
+template <typename T>
+MatrixGraph<T>::MatrixGraph(int graphSize)
+{
+    // Should probably throw an exception if graphSize is negative,
+    // but we just set it to 0 and forget about it
+    if (graphSize < 0)
+        graphSize = 0;
+
+    this->maxSize = graphSize;
+    this->numVertices = 0;
+
+    vertices = new Vertex<T>[maxSize];
+    adj = new int* [maxSize];
+
+    // set the adj matrix edge connection values to 0
+    for (int row = 0; row < maxSize; row++)
     {
-        adj[row] = new int[numVertices];
-        vertices[row].value = elements[row];
-        vertices[row].id = row;
-        for (int column = 0; column < numVertices; column++)
+        adj[row] = new int[maxSize];
+
+        for (int column = 0; column < maxSize; column++)
         {
             adj[row][column] = 0;
         }
+    }
+}
+
+// Constructor to fill the empty adjacency matrix
+template <typename T>
+MatrixGraph<T>::MatrixGraph(T elements[], int arraySize, int graphSize)
+{
+    // Should probably throw an exception if graphSize or arraySize are negative,
+    // but we just set it to 0 and forget about it
+    if (graphSize < 0)
+        graphSize = 0;
+    if (arraySize < 0)
+        arraySize = 0;
+
+    this->maxSize = graphSize;
+    if (arraySize > graphSize)
+    {
+        this->numVertices = graphSize;
+    }
+    else
+    {
+        this->numVertices = arraySize;
+    }
+
+    vertices = new Vertex<T>[maxSize];
+    adj = new int*[maxSize];
+
+    // set the adj matrix edge connection values to 0
+    for (int row = 0; row < maxSize; row++)
+    {
+        adj[row] = new int[maxSize];
+
+        for (int column = 0; column < maxSize; column++)
+        {
+            adj[row][column] = 0;
+        }
+    }
+
+    // initialize the used vertex values
+    for (int i = 0; i < numVertices; i++)
+    {
+        vertices[i].value = elements[i];
+        vertices[i].id = i;
 	}
 }
 
@@ -204,32 +289,47 @@ MatrixGraph<T>::MatrixGraph(T elements[], int size)
 template<typename T>
 MatrixGraph<T>::~MatrixGraph()
 {
-	for (int i = 0; i < numVertices; i++)
+	for (int i = 0; i < maxSize; i++)
 	{
 		delete[] adj[i];
 	}
     delete[] adj;
-
 	delete[] vertices;
 
 	numVertices = 0;
+    maxSize = 0;
 }
 
-// function to clear the graph of data and reinitialize it with size 0.
+// Function to return the number of vertices in the graph.
+template<typename T>
+inline int MatrixGraph<T>::getSize()
+{
+    return this->numVertices;
+}
+
+// Function to return the total number of vertices possible in the graph be it needs to expand.
+template<typename T>
+inline int MatrixGraph<T>::getMaxSize()
+{
+    return this->maxSize;
+}
+
+// Function to clear the graph of data and reinitialize it with size 0.
 template<typename T>
 inline void MatrixGraph<T>::clear()
 {
-	for (int i = 0; i < numVertices; i++)
+	for (int i = 0; i < maxSize; i++)
 	{
-		delete [] adj[i];
+		delete[] adj[i];
 	}
     delete[] adj;
-	delete [] vertices;
+	delete[] vertices;
 
     this->adj = new int* [0];
     this->vertices = new Vertex<T>[0];
 
 	numVertices = 0;
+    maxSize = 0;
 };
 
 // Function to add an edge to the MatrixGraph using index locations
@@ -261,44 +361,73 @@ void MatrixGraph<T>::addEdge(int startIndex, int endIndex, double weight)
 template <typename T>
 inline void MatrixGraph<T>::addVertex(T newVertex)
 {
-    //Set up the data for the expanded graph
     int newSize = numVertices + 1;
-    Vertex<T>* vertexTemp = new Vertex<T>[newSize];
-    int** adjTemp = new int* [newSize];
 
-    //First, copy over the existing vertices and edges
-    for (int row = 0; row < numVertices; row++)
+    // if the new size of the graph is <= the maxSize for the graph,
+    // then we can initialize a vertex without having to expand the graph.
+    if (maxSize >= newSize)
     {
-        adjTemp[row] = new int[newSize];
-        vertexTemp[row].value = vertices[row].value;
-        vertexTemp[row].id = row;
-        for (int column = 0; column < numVertices; column++)
+        //Initialize the new vertex
+        vertices[newSize - 1].value = newVertex;
+        vertices[newSize - 1].id = newSize - 1;
+        for (int index = 0; index < newSize; index++)
         {
-            adjTemp[row][column] = adj[row][column];
+            adj[index][newSize - 1] = 0;
+            adj[newSize - 1][index] = 0;
         }
+        numVertices++;
     }
-
-    //Second, initialize the new vertex
-    adjTemp[newSize - 1] = new int[newSize];
-    vertexTemp[newSize - 1].value = newVertex;
-    vertexTemp[newSize - 1].id = newSize - 1;
-    for (int index = 0; index < newSize; index++)
+    
+    // else, we will have to dynamically expand the graph to meet the new size.
+    else
     {
-        adjTemp[index][newSize - 1] = 0;
-        adjTemp[newSize - 1][index] = 0;
-    }
+        // The new maximum size will be 1.5x the old one, or 2 if the curent max size is 0 or 1.
+        if (maxSize == 0 || maxSize == 1)
+            maxSize = 2;
+        else
+            maxSize = maxSize * 1.5;
 
-    //Third, delete the old data and transfer data from temp to the class data members
-    for (int i = 0; i < numVertices; i++)
-    {
-        delete[] adj[i];
-    }
-    delete[] adj;
-    delete[] vertices;
+        // Temp vertex array and adj matrix to copy over the old data to the new graph
+        Vertex<T>* verticesTemp = new Vertex<T>[maxSize];
+        int** adjTemp = new int* [maxSize];
 
-    this->adj = adjTemp;
-    this->vertices = vertexTemp;
-    this->numVertices = newSize;
+        // First, set all adj matrix edge connection values to 0
+        for (int row = 0; row < maxSize; row++)
+        {
+            adjTemp[row] = new int[maxSize];
+            for (int column = 0; column < maxSize; column++)
+            {
+                adjTemp[row][column] = 0;
+            }
+        }
+
+        // Second, copy the original adjacency matrix and vertices to the temps
+        for (int row = 0; row < numVertices; row++)
+        {
+            verticesTemp[row].value = vertices[row].value;
+            verticesTemp[row].id = vertices[row].id;
+            for (int column = 0; column < numVertices; column++)
+            {
+                adjTemp[row][column] = adj[row][column];
+            }
+        }
+
+        // Third, add the new vertex
+        verticesTemp[newSize - 1].value = newVertex;
+        verticesTemp[newSize - 1].id = newSize - 1;
+
+        // Fourth, delete the old data and transfer the temp data owndership to the class data members
+        for (int i = 0; i < numVertices; i++)
+        {
+            delete[] adj[i];
+        }
+        delete[] adj;
+        delete[] vertices;
+
+        this->adj = adjTemp;
+        this->vertices = verticesTemp;
+        this->numVertices = newSize;
+    }
 }
 
 template<typename T>
