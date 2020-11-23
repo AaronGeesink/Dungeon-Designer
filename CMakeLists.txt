@@ -20,7 +20,8 @@ add_library(dungeon_lib STATIC
   src/factory/loot.cpp
   src/factory/trap.cpp
   
-  src/dungeon_manager.cpp
+  src/singleton/dungeon_manager.cpp
+  src/singleton/dungeon.cpp
 
 )
 

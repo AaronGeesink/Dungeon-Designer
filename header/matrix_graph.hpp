@@ -1,3 +1,6 @@
+#ifndef MATRIX_GRAPH_HPP
+#define MATRIX_GRAPH_HPP
+
 // C++ implementation of a graph using an adjacency matrix
 #include <vector> 
 #include <iostream>
@@ -823,3 +826,5 @@ inline std::vector<Edge<T>> MatrixGraph<T>::kruskalMST()
 
 	return discoveryEdges;
 }
+
+#endif // MATRIX_GRAPH_HPP

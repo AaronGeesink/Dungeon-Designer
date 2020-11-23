@@ -4,12 +4,14 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include "dungeon.hpp"
 
 class DungeonManager {
 	private:
-		
+
 	public:
 		DungeonManager();
+
 		void displayMainMenu();
 		void displayGenerationMenu();
 		void displayDungeonDisplayMenu();

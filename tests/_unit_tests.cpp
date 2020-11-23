@@ -7,6 +7,7 @@
 #include "enemy_test.hpp"
 #include "trap_test.hpp"
 #include "loot_encounter_test.hpp"
+#include "dungeon_test.hpp"
 #include "enemy_encounter_test.hpp"
 #include "trap_encounter_test.hpp"
 
