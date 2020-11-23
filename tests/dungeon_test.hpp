@@ -6,11 +6,9 @@
 #include "../header/singleton/dungeon.hpp"
 
 TEST(DungeonTest, InstanceDisplayDungeon) {
-	Dungeon* dungeon = dungeon->getInstance();
-	EXPECT_EQ(dungeon->getInstance(), dungeon);
-	EXPECT_EQ(dungeon->displayDungeon(), "");
-
-	delete dungeon;
+	//Dungeon::getInstance();
+	//EXPECT_EQ(dungeon.getInstance(), dungeon);
+	EXPECT_EQ(Dungeon::getInstance().displayDungeon(), "");
 }
 
 #endif //DUNGEON_TEST_HPP

@@ -8,18 +8,18 @@
 class Dungeon {
 	private:
 		/* Here will be the instance stored. */
-		static Dungeon* instance;
+		//static Dungeon* instance;
 
 		//DungeonType* type;
+
 		MatrixGraph<Room> rooms;
 
 		/* Private constructor to prevent instancing. */
 		Dungeon();
 
 	public:
-
 		/* Static access method. */
-		static Dungeon* getInstance();
+		static Dungeon& getInstance();
 
 		void generateDungeon();
 		void populateRooms();

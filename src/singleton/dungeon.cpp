@@ -4,18 +4,16 @@
 #include "../../header/singleton/dungeon.hpp"
 
 /* Null, because instance will be initialized on demand. */
-Dungeon* Dungeon::instance = 0;
+//Dungeon* Dungeon::instance = 0;
 
 Dungeon::Dungeon()
-{}
-
-Dungeon* Dungeon::getInstance()
 {
-	if (instance == 0)
-	{
-		instance = new Dungeon();
-	}
+	
+}
 
+Dungeon& Dungeon::getInstance()
+{
+	static Dungeon instance;
 	return instance;
 }
 
