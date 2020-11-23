@@ -1,7 +1,7 @@
 #ifndef DUNGEON_MANAGER_CPP
 #define DUNGEON_MANAGER_CPP
 
-#include "../header/dungeon_manager.hpp"
+#include "../../header/singleton/dungeon_manager.hpp"
 
 DungeonManager::DungeonManager()
 {

@@ -18,7 +18,8 @@ add_library(dungeon_lib STATIC
   src/factory/enemy.cpp
   src/factory/loot.cpp
   
-  src/dungeon_manager.cpp
+  src/singleton/dungeon_manager.cpp
+  src/singleton/dungeon.cpp
 
 )
 
