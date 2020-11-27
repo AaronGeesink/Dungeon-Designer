@@ -11,6 +11,7 @@
 #include "enemy_encounter_test.hpp"
 #include "trap_encounter_test.hpp"
 #include "trap_encounter_factory_test.hpp"
+#include "loot_encounter_factory_test.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
