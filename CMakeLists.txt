@@ -19,6 +19,9 @@ add_library(dungeon_lib STATIC
   src/factory/enemy.cpp
   src/factory/loot.cpp
   src/factory/trap.cpp
+  src/factory/trap_encounter_factory.cpp
+  src/factory/loot_encounter_factory.cpp
+  src/factory/enemy_encounter_factory.cpp
   
   src/singleton/dungeon_manager.cpp
   src/singleton/dungeon.cpp
