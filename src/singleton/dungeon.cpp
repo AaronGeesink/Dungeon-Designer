@@ -17,9 +17,37 @@ Dungeon& Dungeon::getInstance()
 	return instance;
 }
 
-void Dungeon::generateDungeon()
+void Dungeon::setDungeonType(DungeonType* dungeonType)
 {
-	// TODO: Implement
+	this->dungeonType = dungeonType;
+}
+
+/*
+void Dungeon::setDungeonType(int dungeonTypeCode)
+{
+	switch (dungeonTypeCode)
+	{
+		case LINEAR:
+			this->dungeonType = new LinearDungeonType();
+
+		case BRANCHING:
+
+		case GRIDDED:
+
+		case default:
+			
+	}
+		
+}
+*/
+void Dungeon::generateDungeon(int numRooms)
+{
+	this->rooms.clear();
+	for (int i = 0; i < numRooms; i++)
+	{
+		rooms.addVertex(new Room(i));
+	}
+	dungeonType->generateDungeon(rooms);
 }
 
 void Dungeon::populateRooms()
