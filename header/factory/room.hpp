@@ -8,8 +8,9 @@ class Room
 {
 private:
     int id;
-    Encounter* encounter;
+    //Encounter* encounter;
 public:
+    Room();
     Room(int id);
     ~Room();
     void generateEncounter();

@@ -3,7 +3,8 @@
 
 #include "../matrix_graph.hpp"
 #include "../factory/room.hpp"
-#include "../strategy/dungeon_type.hpp";
+#include "../strategy/dungeon_type.hpp"
+#include "../strategy/linear_dungeon_type.hpp"
 #include <string>
 
 //enum DungeonTypeCode { LINEAR = 0, BRANCHING = 1, GRIDDED = 2 };
@@ -21,6 +22,8 @@ class Dungeon {
 		Dungeon();
 
 	public:
+		~Dungeon();
+
 		/* Static access method. */
 		static Dungeon& getInstance();
 

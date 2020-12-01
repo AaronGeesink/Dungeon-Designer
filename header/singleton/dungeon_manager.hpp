@@ -1,7 +1,7 @@
 #ifndef DUNGEON_MANAGER_HPP
 #define DUNGEON_MANAGER_HPP
 
-#include <iostream>
+//#include <iostream>
 #include <string>
 #include <limits>
 #include "dungeon.hpp"
@@ -15,6 +15,7 @@ class DungeonManager {
 		void displayMainMenu();
 		void displayGenerationMenu();
 		void displayDungeonDisplayMenu();
+		void generateDungeon();
 		void clearScreen();
 };
 

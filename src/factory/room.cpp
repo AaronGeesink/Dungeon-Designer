@@ -8,17 +8,21 @@
 #include "../../header/factory/encounter.hpp"
 #include "../../header/factory/enemy_encounter.hpp"
 
-Room::Room(int id) : id(id), encounter(nullptr) {
+Room::Room() : id(-1)/*, encounter(nullptr)*/ {
+    this->generateEncounter();
+}
+
+Room::Room(int id) : id(id)/*, encounter(nullptr)*/ {
     this->generateEncounter();
 }
 
 Room::~Room() {
-    delete this->encounter;
+    //delete this->encounter;
 }
 
 void Room::generateEncounter() {
     // TODO: Finish implementation once AbstractFactory for encounters has been finished
-    delete this->encounter;
+    //delete this->encounter;
 
     int encounter_type = rand() % 3;
     // AbstractEncounterFactory factory = nullptr;
@@ -43,13 +47,13 @@ void Room::generateEncounter() {
     // if (factory == nullptr) throw -1;
 
     // this->encounter = factory.genEncounter();
-    this->encounter = new EnemyEncounter();
+    //this->encounter = new EnemyEncounter();
 }
 
 std::string Room::getRoom() {
     std::stringstream rtn;
     rtn << "Room " << this->id << ": ";
-    rtn << this->encounter->getEncounter();
+    //rtn << this->encounter->getEncounter();
 
     return rtn.str();
 }

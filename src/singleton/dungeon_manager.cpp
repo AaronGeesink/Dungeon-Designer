@@ -2,6 +2,7 @@
 #define DUNGEON_MANAGER_CPP
 
 #include "../../header/singleton/dungeon_manager.hpp"
+#include "../../header/strategy/linear_dungeon_type.hpp"
 
 DungeonManager::DungeonManager()
 {
@@ -78,17 +79,23 @@ void DungeonManager::displayGenerationMenu()
 			if (!(choice >= 1 && choice <= 4))
 				throw std::out_of_range("Please input a valid choice");
 
+			DungeonType* type;
 			switch (choice) {
 			case 1:
+				type = new LinearDungeonType();
+				Dungeon::getInstance().setDungeonType(type);
+				generateDungeon();
 				displayDungeonDisplayMenu();
 				break;
 
 			case 2:
 				displayDungeonDisplayMenu();
+				generateDungeon();
 				break;
 
 			case 3:
 				displayDungeonDisplayMenu();
+				generateDungeon();
 				break;
 
 			case 4:
@@ -116,11 +123,8 @@ void DungeonManager::displayDungeonDisplayMenu() {
 	while (true)
 	{
 		clearScreen();
-		std::cout << "Here is the generated dungeon:\n\n"
-			<< "TODO: Display Generated Dungeon\n\n"
-			<< "Encounters for each room:\n"
-			<< "TODO: Display Encounters\n\n"
-			<< "Options:\n"
+		std::cout << Dungeon::getInstance().displayDungeon()
+			<< "\nOptions:\n"
 			<< "1. Regenerate encounters\n"
 			<< "2. Generate a new dungeon layout\n"
 			<< "3. Return to Main Menu\n"
@@ -159,6 +163,38 @@ void DungeonManager::displayDungeonDisplayMenu() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
+}
+
+void DungeonManager::generateDungeon()
+{	
+	int numRooms;
+	bool loop = true;
+	while (loop == true)
+	{
+		try
+		{
+			std::cout << "How many rooms? (0 to 30): ";
+			std::cin >> numRooms;
+
+			if (!(numRooms >= 0 && numRooms <= 30))
+				throw std::out_of_range("Please input a valid number of rooms");
+
+			Dungeon::getInstance().generateDungeon(numRooms);
+			Dungeon::getInstance().populateRooms();
+
+			loop = false;
+		}
+		catch (const std::out_of_range& e) {
+			std::cout << "\n" << e.what() << "\n\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+		catch (const std::ios_base::failure&) {
+			std::cout << "\nPlease enter numbers only!\n" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}	
 }
 
 void DungeonManager::clearScreen()

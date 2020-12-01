@@ -8,7 +8,12 @@
 
 Dungeon::Dungeon()
 {
-	
+	dungeonType = new LinearDungeonType();
+}
+
+Dungeon::~Dungeon()
+{
+	delete dungeonType;
 }
 
 Dungeon& Dungeon::getInstance()
@@ -19,46 +24,46 @@ Dungeon& Dungeon::getInstance()
 
 void Dungeon::setDungeonType(DungeonType* dungeonType)
 {
+	//delete dungeonType;
 	this->dungeonType = dungeonType;
 }
 
-/*
-void Dungeon::setDungeonType(int dungeonTypeCode)
-{
-	switch (dungeonTypeCode)
-	{
-		case LINEAR:
-			this->dungeonType = new LinearDungeonType();
-
-		case BRANCHING:
-
-		case GRIDDED:
-
-		case default:
-			
-	}
-		
-}
-*/
 void Dungeon::generateDungeon(int numRooms)
 {
 	this->rooms.clear();
+
 	for (int i = 0; i < numRooms; i++)
 	{
-		rooms.addVertex(new Room(i));
+		Room room(i);
+		room.generateEncounter();
+		rooms.addVertex(room);
 	}
 	dungeonType->generateDungeon(rooms);
 }
 
 void Dungeon::populateRooms()
 {
-	// TODO: Implement
+	for (int i = 0; i < rooms.getSize(); i++)
+	{
+		Room room(i);
+		room.generateEncounter();
+		rooms.replaceVertex(i, room);
+	}
 }
 
 std::string Dungeon::displayDungeon()
 {
-	// TODO: Implement
-	return "";
+	std::stringstream rtn;
+
+	rtn << "Here is the generated dungeon:\n\n"
+		<< dungeonType->displayDungeon(rooms)
+		<< "\nEncounters for each room:\n";
+	for (int i = 0; i < rooms.getSize(); i++)
+	{
+		rtn << rooms.getVertex(i).getRoom();
+	}
+
+	return rtn.str();
 }
 
 #endif
