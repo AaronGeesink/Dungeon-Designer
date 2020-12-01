@@ -20,8 +20,8 @@ TEST(TrapEncounterTest, GetEncounterHasLoop) {
 }
 
 TEST(TrapEncounterTest, SingleTrap) {
-    std::vector<Trap*> traps;
-    traps.push_back(new Trap("Waterslide", "Slippery Toes"));
+    std::vector<Trap> traps;
+    traps.push_back(Trap("Waterslide", "Slippery Toes"));
 
     TrapEncounter* trap = new TrapEncounter(traps);
 
@@ -31,10 +31,10 @@ TEST(TrapEncounterTest, SingleTrap) {
 }
 
 TEST(TrapEncounterTest, ThreeTrap) {
-    std::vector<Trap*> traps;
-    traps.push_back(new Trap("Waterslide", "Slippery Toes"));
-    traps.push_back(new Trap("Bear Trap", "Pain and Suffering"));
-    traps.push_back(new Trap("Hidden Electromagnet", "Brain Melt"));
+    std::vector<Trap> traps;
+    traps.push_back(Trap("Waterslide", "Slippery Toes"));
+    traps.push_back(Trap("Bear Trap", "Pain and Suffering"));
+    traps.push_back(Trap("Hidden Electromagnet", "Brain Melt"));
 
     TrapEncounter* trap = new TrapEncounter(traps);
 

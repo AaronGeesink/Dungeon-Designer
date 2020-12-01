@@ -60,7 +60,7 @@ std::string Dungeon::displayDungeon()
 		<< "\nEncounters for each room:\n";
 	for (int i = 0; i < rooms.getSize(); i++)
 	{
-		rtn << rooms.getVertex(i).getRoom();
+		rtn << rooms.getVertex(i).getRoom() << "\n";
 	}
 
 	return rtn.str();

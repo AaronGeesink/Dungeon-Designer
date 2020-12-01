@@ -23,8 +23,8 @@ TEST(EnemyEncounterTest, GetEncounterHasEnemy) {
 
 TEST(EnemyEncounterTest, SingleEnemy) {
     // Setup list with a single enemy
-    std::vector<std::pair<Enemy*, int>*> enemies;
-    enemies.push_back(new std::pair<Enemy*, int>(new Enemy("Joe", 100), 20));
+    std::vector<std::pair<Enemy, int>> enemies;
+    enemies.push_back(std::pair<Enemy, int>(Enemy("Joe", 100), 20));
 
     // Setup the EnemyEncounter, giving it the list of enemies
     EnemyEncounter* enemy = new EnemyEncounter(enemies);
@@ -38,10 +38,10 @@ TEST(EnemyEncounterTest, SingleEnemy) {
 
 TEST(EnemyEncounterTest, ThreeEnemies) {
     // Setup list with multiple enemies
-    std::vector<std::pair<Enemy*, int>*> enemies;
-    enemies.push_back(new std::pair<Enemy*, int>(new Enemy("Joe", 100), 20));
-    enemies.push_back(new std::pair<Enemy*, int>(new Enemy("Foo", 69), 11));
-    enemies.push_back(new std::pair<Enemy*, int>(new Enemy("Bar", 4), 20));
+    std::vector<std::pair<Enemy, int>> enemies;
+    enemies.push_back(std::pair<Enemy, int>(Enemy("Joe", 100), 20));
+    enemies.push_back(std::pair<Enemy, int>(Enemy("Foo", 69), 11));
+    enemies.push_back(std::pair<Enemy, int>(Enemy("Bar", 4), 20));
 
     // Setup the EnemyEncounter, giving it the list of enemies
     EnemyEncounter* enemy = new EnemyEncounter(enemies);

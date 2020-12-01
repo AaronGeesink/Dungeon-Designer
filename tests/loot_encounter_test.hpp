@@ -22,8 +22,8 @@ TEST(LootEncounterTest, GetEncounterHasLoot) {
 }
 
 TEST(LootEncounterTest, SingleLoot) {
-    std::vector<std::pair<Loot*, int>*> items;
-    items.push_back(new std::pair<Loot*, int>(new Loot("Computer Monitor"), 20));
+    std::vector<std::pair<Loot, int>> items;
+    items.push_back(std::pair<Loot, int>(Loot("Computer Monitor"), 20));
 
     LootEncounter* loot = new LootEncounter(items);
 
@@ -33,10 +33,10 @@ TEST(LootEncounterTest, SingleLoot) {
 }
 
 TEST(LootEncounterTest, ThreeLoot) {
-    std::vector<std::pair<Loot*, int>*> items;
-    items.push_back(new std::pair<Loot*, int>(new Loot("Computer Monitor"), 20));
-    items.push_back(new std::pair<Loot*, int>(new Loot("Throwing Star"), 4));
-    items.push_back(new std::pair<Loot*, int>(new Loot("NVIDIA GTX 3090"), 1));
+    std::vector<std::pair<Loot, int>> items;
+    items.push_back(std::pair<Loot, int>(Loot("Computer Monitor"), 20));
+    items.push_back(std::pair<Loot, int>(Loot("Throwing Star"), 4));
+    items.push_back(std::pair<Loot, int>(Loot("NVIDIA GTX 3090"), 1));
 
     LootEncounter* loot = new LootEncounter(items);
 
