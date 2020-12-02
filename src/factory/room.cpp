@@ -30,6 +30,7 @@ Room::Room(const Room& other) : id(other.id), encounter(nullptr) {
 // Copy assignment
 Room& Room::operator=(const Room& other) {
     // std::cout << "Copy Assignment Started" << std::endl;
+    delete this->encounter;
     this->id = other.id;
     this->encounter = other.encounter->clone();
     // std::cout << "Copy Assignment Finished" << std::endl;

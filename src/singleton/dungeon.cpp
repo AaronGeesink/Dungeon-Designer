@@ -24,7 +24,7 @@ Dungeon& Dungeon::getInstance()
 
 void Dungeon::setDungeonType(DungeonType* dungeonType)
 {
-	//delete dungeonType;
+	delete this->dungeonType;
 	this->dungeonType = dungeonType;
 }
 
