@@ -10,16 +10,16 @@ const int MAX_TRAPS = 2;
 TrapEncounter::TrapEncounter() {
     int num_traps = (rand() % MAX_TRAPS) + 1;
     for(int i = 0; i<num_traps; i++) {
-        this->traps.push_back(new Trap());
+        this->traps.push_back(Trap());
     }
 }
 
-TrapEncounter::TrapEncounter(std::vector<Trap*> traps) : traps(traps) {}
+TrapEncounter::TrapEncounter(std::vector<Trap> traps) : traps(traps) {}
 
 TrapEncounter::~TrapEncounter() {
-    for (auto trap : this->traps) {
-        delete trap;
-    }
+    // for (auto trap : this->traps) {
+    //     delete trap;
+    // }
 }
 
 std::string TrapEncounter::getEncounter() {
@@ -29,13 +29,17 @@ std::string TrapEncounter::getEncounter() {
     //      Trap Door causing Weakness.
     rtn << "Trap Encounter!\n";
     for (int i = 0; i < this->traps.size(); i++) {
-        rtn << "\t" << this->traps[i]->getName() << " causing " << this->traps[i]->getEffects() << ".";
+        rtn << "\t" << this->traps[i].getName() << " causing " << this->traps[i].getEffects() << ".";
         if (i != this->traps.size() - 1) {
             rtn << std::endl;
         }
     }
 
     return rtn.str();
+}
+
+Encounter* TrapEncounter::clone() {
+    return new TrapEncounter(this->traps);
 }
 
 #endif // TRAP_ENCOUNTER_CPP

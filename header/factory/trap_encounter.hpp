@@ -9,12 +9,13 @@
 class TrapEncounter : public Encounter
 {
 private:
-    std::vector<Trap*> traps;
+    std::vector<Trap> traps;
 public:
     TrapEncounter();
-    TrapEncounter(std::vector<Trap*> traps);
+    TrapEncounter(std::vector<Trap> traps);
     ~TrapEncounter();
     std::string getEncounter();
+    Encounter* clone();
 };
 
 

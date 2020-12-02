@@ -176,11 +176,11 @@ TEST(GraphTest, GetNodeTest) {
     int numbers[5] = { 0,1,2,3,4 };
     MatrixGraph<int> graph(numbers, 5, 5);
 
-    EXPECT_EQ(graph.getNode(0), 0);
-    EXPECT_EQ(graph.getNode(1), 1);
-    EXPECT_EQ(graph.getNode(2), 2);
-    EXPECT_EQ(graph.getNode(3), 3);
-    EXPECT_EQ(graph.getNode(4), 4);
+    EXPECT_EQ(graph.getVertex(0), 0);
+    EXPECT_EQ(graph.getVertex(1), 1);
+    EXPECT_EQ(graph.getVertex(2), 2);
+    EXPECT_EQ(graph.getVertex(3), 3);
+    EXPECT_EQ(graph.getVertex(4), 4);
 }
 
 TEST(GraphTest, BidirectionalEdgeTest) {
@@ -249,7 +249,7 @@ TEST(GraphTest, AddVertexNoExpandTest) {
 
     EXPECT_EQ(graph.getSize(), 5);
     EXPECT_EQ(graph.getMaxSize(), 5);
-    EXPECT_EQ(graph.getNode(4), 4);
+    EXPECT_EQ(graph.getVertex(4), 4);
     EXPECT_EQ(graph.displayGraph(), test);
 }
 
@@ -278,7 +278,7 @@ TEST(GraphTest, AddVertexWithExpandTest) {
 
     EXPECT_EQ(graph.getSize(), 5);
     EXPECT_EQ(graph.getMaxSize(), 6); // 4 * 1.5 = 6
-    EXPECT_EQ(graph.getNode(4), 4);
+    EXPECT_EQ(graph.getVertex(4), 4);
     EXPECT_EQ(graph.displayGraph(), test);
 }
 
@@ -297,7 +297,7 @@ TEST(GraphTest, AddVertexExpandFromZeroTest) {
 
     EXPECT_EQ(graph.getSize(), 1);
     EXPECT_EQ(graph.getMaxSize(), 2);
-    EXPECT_EQ(graph.getNode(0), 10);
+    EXPECT_EQ(graph.getVertex(0), 10);
     EXPECT_EQ(graph.displayGraph(), test);
 }
 
@@ -317,8 +317,8 @@ TEST(GraphTest, AddVertexExpandFromOneTest) {
 
     EXPECT_EQ(graph.getSize(), 2);
     EXPECT_EQ(graph.getMaxSize(), 2);
-    EXPECT_EQ(graph.getNode(0), 0);
-    EXPECT_EQ(graph.getNode(1), 10);
+    EXPECT_EQ(graph.getVertex(0), 0);
+    EXPECT_EQ(graph.getVertex(1), 10);
     EXPECT_EQ(graph.displayGraph(), test);
 }
 
@@ -357,8 +357,8 @@ TEST(GraphTest, ClearGraphTest) {
         "  4  0   0   0   1   0  \n";
 
     EXPECT_EQ(graph.getSize(), 5);
-    EXPECT_EQ(graph.getNode(0), 4);
-    EXPECT_EQ(graph.getNode(4), 8);
+    EXPECT_EQ(graph.getVertex(0), 4);
+    EXPECT_EQ(graph.getVertex(4), 8);
     EXPECT_EQ(graph.displayGraph(), test);
 }
 
@@ -386,8 +386,8 @@ TEST(GraphTest, ClearEmptyGraphTest) {
         "  4  0   0   0   0   0  \n";
 
     EXPECT_EQ(graph.getSize(), 5);
-    EXPECT_EQ(graph.getNode(0), 4);
-    EXPECT_EQ(graph.getNode(4), 8);
+    EXPECT_EQ(graph.getVertex(0), 4);
+    EXPECT_EQ(graph.getVertex(4), 8);
     EXPECT_EQ(graph.displayGraph(), test);
 }
 

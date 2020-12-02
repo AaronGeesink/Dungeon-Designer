@@ -11,8 +11,8 @@ public:
 
 	~DungeonType() {};
 	
-	virtual generateDungeon(MatrixGraph<Room>& rooms) = 0;
-	virtual displayDungeon(const MatrixGraph<Room>& rooms) = 0;
+	virtual void generateDungeon(MatrixGraph<Room>& rooms) = 0;
+	virtual std::string displayDungeon(MatrixGraph<Room>& rooms) = 0;
 };
 
-endif //DUNGEON_TYPE_HPP
+#endif //DUNGEON_TYPE_HPP

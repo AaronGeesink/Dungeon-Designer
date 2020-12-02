@@ -10,10 +10,13 @@ private:
     int id;
     Encounter* encounter;
 public:
+    Room();
     Room(int id);
     ~Room();
     void generateEncounter();
     std::string getRoom();
+    Room(const Room& other);
+    Room& operator=(const Room& other);
 };
 
 #endif // ROOM_HPP

@@ -14,17 +14,13 @@ LootEncounter::LootEncounter() {
     int num_loot = (rand() % MAX_LOOT) + 1;
     for (int i=0; i<num_loot; i++) {
         int num_specific = (rand() % MAX_PER_LOOT) + 1;
-        this->items.push_back(new std::pair<Loot*, int>(new Loot(), num_specific));
+        this->items.push_back(std::pair<Loot, int>(Loot(), num_specific));
     }
 }
 
-LootEncounter::LootEncounter(std::vector<std::pair<Loot*, int>*> items) : items(items) {}
+LootEncounter::LootEncounter(std::vector<std::pair<Loot, int>> items) : items(items) {}
 
 LootEncounter::~LootEncounter() {
-    for(auto item : this->items) {
-        delete item->first;
-        delete item;
-    }
 }
 
 std::string LootEncounter::getEncounter() {
@@ -34,8 +30,8 @@ std::string LootEncounter::getEncounter() {
     //      20 golds
     rtn << "Loot Encounter!" << std::endl;
     for (int i = 0; i< this->items.size(); i++) {
-        std::pair<Loot*, int>* p = this->items[i];
-        rtn << "\t" << p->second << " " << p->first->getName() << "s.";
+        std::pair<Loot, int> p = this->items[i];
+        rtn << "\t" << p.second << " " << p.first.getName() << "s.";
 
         if (i != this->items.size() - 1) {
             rtn << std::endl;
@@ -43,6 +39,10 @@ std::string LootEncounter::getEncounter() {
     }
 
     return rtn.str();
+}
+
+Encounter* LootEncounter::clone() {
+    return new LootEncounter(this->items);
 }
 
 #endif // LOOT_ENCOUNTER_CPP

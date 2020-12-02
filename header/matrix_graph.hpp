@@ -162,7 +162,15 @@ public:
      * Function to return a node object in the graph.
      * Index locations start at 0.
      */
-    T getNode(int index);
+    T getVertex(int index);
+
+    /**
+     * @author Aaron Geesink
+     * @brief getNode(int index)
+     * Function to return a node object in the graph.
+     * Index locations start at 0.
+     */
+    void replaceVertex(int index, T newVertex);
 
     /**
      * @author Aaron Geesink
@@ -434,9 +442,15 @@ inline void MatrixGraph<T>::addVertex(T newVertex)
 }
 
 template<typename T>
-inline T MatrixGraph<T>::getNode(int index)
+inline T MatrixGraph<T>::getVertex(int index)
 {
     return vertices[index].value;
+}
+
+template<typename T>
+inline void MatrixGraph<T>::replaceVertex(int index, T newVertex)
+{
+    vertices[index].value = newVertex;
 }
 
 template<typename T>
