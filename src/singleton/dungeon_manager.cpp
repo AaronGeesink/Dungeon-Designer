@@ -137,7 +137,7 @@ void DungeonManager::displayDungeonDisplayMenu() {
 
 			switch (choice) {
 			case 1:
-				//TODO: Regenerate Encounters
+				Dungeon::getInstance().populateRooms();
 				displayDungeonDisplayMenu();
 				break;
 
