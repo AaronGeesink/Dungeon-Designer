@@ -34,7 +34,7 @@ void Dungeon::generateDungeon(int numRooms)
 
 	for (int i = 0; i < numRooms; i++)
 	{
-		Room room(i);
+		Room room(i + 1);
 		room.generateEncounter();
 		rooms.addVertex(room);
 	}
@@ -45,7 +45,7 @@ void Dungeon::populateRooms()
 {
 	for (int i = 0; i < rooms.getSize(); i++)
 	{
-		Room room(i);
+		Room room(i + 1);
 		room.generateEncounter();
 		rooms.replaceVertex(i, room);
 	}
