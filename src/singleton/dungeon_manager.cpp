@@ -4,6 +4,8 @@
 #include "../../header/singleton/dungeon_manager.hpp"
 #include "../../header/strategy/linear_dungeon_type.hpp"
 #include "../../header/strategy/branching_dungeon_type.hpp"
+#include "../../header/strategy/gridded_dungeon_type.hpp"
+
 
 DungeonManager::DungeonManager()
 { }
@@ -95,8 +97,10 @@ void DungeonManager::displayGenerationMenu()
 				break;
 
 			case 3:
-				displayDungeonDisplayMenu();
+				type = new GriddedDungeonType();
+				Dungeon::getInstance().setDungeonType(type);
 				generateDungeon();
+				displayDungeonDisplayMenu();
 				break;
 
 			case 4:
