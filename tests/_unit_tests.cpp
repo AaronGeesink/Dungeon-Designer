@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
+#include "gridded_dungeon_test.hpp"
 #include "linear_dungeon_test.hpp"
 #include "branching_dungeon_test.hpp"
 #include "room_test.hpp"
