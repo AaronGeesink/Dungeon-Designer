@@ -3,11 +3,10 @@
 
 #include "../../header/singleton/dungeon_manager.hpp"
 #include "../../header/strategy/linear_dungeon_type.hpp"
+#include "../../header/strategy/branching_dungeon_type.hpp"
 
 DungeonManager::DungeonManager()
-{
-	
-}
+{ }
 
 void DungeonManager::displayMainMenu() {
 	int choice;
@@ -89,8 +88,10 @@ void DungeonManager::displayGenerationMenu()
 				break;
 
 			case 2:
-				displayDungeonDisplayMenu();
+				type = new BranchingDungeonType();
+				Dungeon::getInstance().setDungeonType(type);
 				generateDungeon();
+				displayDungeonDisplayMenu();
 				break;
 
 			case 3:
@@ -142,7 +143,7 @@ void DungeonManager::displayDungeonDisplayMenu() {
 				break;
 
 			case 2:
-				//TODO: Regenrate Dungeon layout
+				generateDungeon();
 				displayDungeonDisplayMenu();
 				break;
 

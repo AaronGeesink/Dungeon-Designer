@@ -2,6 +2,7 @@
 #include "gmock/gmock.h"
 
 #include "linear_dungeon_test.hpp"
+#include "branching_dungeon_test.hpp"
 #include "room_test.hpp"
 #include "graph_test.hpp"
 #include "loot_test.hpp"

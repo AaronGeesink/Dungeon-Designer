@@ -24,6 +24,7 @@ add_library(dungeon_lib STATIC
   src/factory/enemy_encounter_factory.cpp
 
   src/strategy/linear_dungeon_type.cpp
+  src/strategy/branching_dungeon_type.cpp
   
   src/singleton/dungeon_manager.cpp
   src/singleton/dungeon.cpp
