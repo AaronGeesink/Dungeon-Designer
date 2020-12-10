@@ -20,10 +20,10 @@ class Dungeon {
 
 		/* Private constructor to prevent instantiating. */
 		Dungeon();
-
-	public:
 		~Dungeon();
 
+	public:
+		
 		/* Static access method. */
 		static Dungeon& getInstance();
 
