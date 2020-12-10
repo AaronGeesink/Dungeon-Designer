@@ -115,4 +115,202 @@ After following the instructions in the **Installation/Usage** section to genera
 
 We also used Valgrind to make sure that there were no memory leaks in the program. We ran Valgrind against the main `dungeondesigner` executable as well as the `test` executable to be sure that all memory allocated was also deallocated. This test can be run using `valgrind --leak-check=full ./dungeondesigner` or `valgrind --leak-check=full ./test` to test the respective program.
 
- 
+ <details><summary>Example of the valgrind results and googleTests</summary>
+<p>
+
+```$ valgrind ./test
+==22== Memcheck, a memory error detector
+==22== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==22== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==22== Command: ./test
+==22==
+[==========] Running 65 tests from 15 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from GriddedDungeonTest
+[ RUN      ] GriddedDungeonTest.Generate1RoomGriddedDungeonTest
+[       OK ] GriddedDungeonTest.Generate1RoomGriddedDungeonTest (57 ms)
+[ RUN      ] GriddedDungeonTest.Generate0RoomGriddedDungeonTest
+[       OK ] GriddedDungeonTest.Generate0RoomGriddedDungeonTest (4 ms)
+[ RUN      ] GriddedDungeonTest.Generate2RoomGriddedDungeonTest
+[       OK ] GriddedDungeonTest.Generate2RoomGriddedDungeonTest (42 ms)
+[ RUN      ] GriddedDungeonTest.Generate10RoomGriddedDungeonTest
+[       OK ] GriddedDungeonTest.Generate10RoomGriddedDungeonTest (47 ms)
+[----------] 4 tests from GriddedDungeonTest (160 ms total)
+
+[----------] 5 tests from LinearDungeonTest
+[ RUN      ] LinearDungeonTest.Generate1RoomLinearDungeonTest
+[       OK ] LinearDungeonTest.Generate1RoomLinearDungeonTest (6 ms)
+[ RUN      ] LinearDungeonTest.PolymorphsismTest
+[       OK ] LinearDungeonTest.PolymorphsismTest (3 ms)
+[ RUN      ] LinearDungeonTest.Generate2RoomLinearDungeonTest
+[       OK ] LinearDungeonTest.Generate2RoomLinearDungeonTest (6 ms)
+[ RUN      ] LinearDungeonTest.Generate6RoomLinearDungeonTest
+[       OK ] LinearDungeonTest.Generate6RoomLinearDungeonTest (6 ms)
+[ RUN      ] LinearDungeonTest.Generate22RoomLinearDungeonTest
+[       OK ] LinearDungeonTest.Generate22RoomLinearDungeonTest (19 ms)
+[----------] 5 tests from LinearDungeonTest (41 ms total)
+
+[----------] 4 tests from BranchingDungeonTest
+[ RUN      ] BranchingDungeonTest.Generate1RoomBranchingDungeonTest
+[       OK ] BranchingDungeonTest.Generate1RoomBranchingDungeonTest (5 ms)
+[ RUN      ] BranchingDungeonTest.Generate0RoomBranchingDungeonTest
+[       OK ] BranchingDungeonTest.Generate0RoomBranchingDungeonTest (2 ms)
+[ RUN      ] BranchingDungeonTest.Generate2RoomBranchingDungeonTest
+[       OK ] BranchingDungeonTest.Generate2RoomBranchingDungeonTest (6 ms)
+[ RUN      ] BranchingDungeonTest.Generate10RoomBranchingDungeonTest
+[       OK ] BranchingDungeonTest.Generate10RoomBranchingDungeonTest (24 ms)
+[----------] 4 tests from BranchingDungeonTest (39 ms total)
+
+[----------] 3 tests from RoomTest
+[ RUN      ] RoomTest.GetEncounterNotEmpty
+[       OK ] RoomTest.GetEncounterNotEmpty (5 ms)
+[ RUN      ] RoomTest.GenEncounterNoThrow
+[       OK ] RoomTest.GenEncounterNoThrow (2 ms)
+[ RUN      ] RoomTest.GenDifferentEncounters
+[       OK ] RoomTest.GenDifferentEncounters (6 ms)
+[----------] 3 tests from RoomTest (13 ms total)
+
+[----------] 19 tests from GraphTest
+[ RUN      ] GraphTest.NoParameterConstructorTest
+[       OK ] GraphTest.NoParameterConstructorTest (13 ms)
+[ RUN      ] GraphTest.SingleParameterConstructorTest
+[       OK ] GraphTest.SingleParameterConstructorTest (6 ms)
+[ RUN      ] GraphTest.NegativeSingleParameterConstructorTest
+[       OK ] GraphTest.NegativeSingleParameterConstructorTest (3 ms)
+[ RUN      ] GraphTest.SameSizeInitializationTest
+[       OK ] GraphTest.SameSizeInitializationTest (4 ms)
+[ RUN      ] GraphTest.NegativeArrayInitializationTest
+[       OK ] GraphTest.NegativeArrayInitializationTest (5 ms)
+[ RUN      ] GraphTest.NegativeGraphInitializationTest
+[       OK ] GraphTest.NegativeGraphInitializationTest (3 ms)
+[ RUN      ] GraphTest.BothNegativeInitializationTest
+[       OK ] GraphTest.BothNegativeInitializationTest (3 ms)
+[ RUN      ] GraphTest.BiggerGraphThanArrayInitializationTest
+[       OK ] GraphTest.BiggerGraphThanArrayInitializationTest (2 ms)
+[ RUN      ] GraphTest.SmallerGraphThanArrayInitializationTest
+[       OK ] GraphTest.SmallerGraphThanArrayInitializationTest (3 ms)
+[ RUN      ] GraphTest.ZeroGraphSizeInitializationTest
+[       OK ] GraphTest.ZeroGraphSizeInitializationTest (4 ms)
+[ RUN      ] GraphTest.GetNodeTest
+[       OK ] GraphTest.GetNodeTest (4 ms)
+[ RUN      ] GraphTest.BidirectionalEdgeTest
+[       OK ] GraphTest.BidirectionalEdgeTest (15 ms)
+[ RUN      ] GraphTest.IdenticalNodesTest
+[       OK ] GraphTest.IdenticalNodesTest (5 ms)
+[ RUN      ] GraphTest.AddVertexNoExpandTest
+[       OK ] GraphTest.AddVertexNoExpandTest (8 ms)
+[ RUN      ] GraphTest.AddVertexWithExpandTest
+[       OK ] GraphTest.AddVertexWithExpandTest (7 ms)
+[ RUN      ] GraphTest.AddVertexExpandFromZeroTest
+[       OK ] GraphTest.AddVertexExpandFromZeroTest (5 ms)
+[ RUN      ] GraphTest.AddVertexExpandFromOneTest
+[       OK ] GraphTest.AddVertexExpandFromOneTest (6 ms)
+[ RUN      ] GraphTest.ClearGraphTest
+[       OK ] GraphTest.ClearGraphTest (10 ms)
+[ RUN      ] GraphTest.ClearEmptyGraphTest
+[       OK ] GraphTest.ClearEmptyGraphTest (7 ms)
+[----------] 19 tests from GraphTest (116 ms total)
+
+[----------] 3 tests from LootTest
+[ RUN      ] LootTest.NonEmptyName
+[       OK ] LootTest.NonEmptyName (2 ms)
+[ RUN      ] LootTest.SetEmptyName
+[       OK ] LootTest.SetEmptyName (3 ms)
+[ RUN      ] LootTest.SetName
+[       OK ] LootTest.SetName (2 ms)
+[----------] 3 tests from LootTest (7 ms total)
+
+[----------] 3 tests from EnemyTest
+[ RUN      ] EnemyTest.NonEmptyName
+[       OK ] EnemyTest.NonEmptyName (2 ms)
+[ RUN      ] EnemyTest.NonZeroHealth
+[       OK ] EnemyTest.NonZeroHealth (2 ms)
+[ RUN      ] EnemyTest.SetValues
+[       OK ] EnemyTest.SetValues (4 ms)
+[----------] 3 tests from EnemyTest (8 ms total)
+
+[----------] 3 tests from TrapTest
+[ RUN      ] TrapTest.NonEmptyVariables
+[       OK ] TrapTest.NonEmptyVariables (2 ms)
+[ RUN      ] TrapTest.SetEmptyVariables
+[       OK ] TrapTest.SetEmptyVariables (2 ms)
+[ RUN      ] TrapTest.SetVariables
+[       OK ] TrapTest.SetVariables (3 ms)
+[----------] 3 tests from TrapTest (9 ms total)
+
+[----------] 4 tests from LootEncounterTest
+[ RUN      ] LootEncounterTest.EncounterNotEmpty
+[       OK ] LootEncounterTest.EncounterNotEmpty (1 ms)
+[ RUN      ] LootEncounterTest.GetEncounterHasLoot
+[       OK ] LootEncounterTest.GetEncounterHasLoot (11 ms)
+[ RUN      ] LootEncounterTest.SingleLoot
+[       OK ] LootEncounterTest.SingleLoot (4 ms)
+[ RUN      ] LootEncounterTest.ThreeLoot
+[       OK ] LootEncounterTest.ThreeLoot (5 ms)
+[----------] 4 tests from LootEncounterTest (23 ms total)
+
+[----------] 3 tests from DungeonTest
+[ RUN      ] DungeonTest.DisplayDungeonTest
+[       OK ] DungeonTest.DisplayDungeonTest (4 ms)
+[ RUN      ] DungeonTest.GenerateDungeonTest
+[       OK ] DungeonTest.GenerateDungeonTest (23 ms)
+[ RUN      ] DungeonTest.populateRoomTest
+[       OK ] DungeonTest.populateRoomTest (13 ms)
+[----------] 3 tests from DungeonTest (42 ms total)
+
+[----------] 4 tests from EnemyEncounterTest
+[ RUN      ] EnemyEncounterTest.GetEncounterNotEmpty
+[       OK ] EnemyEncounterTest.GetEncounterNotEmpty (1 ms)
+[ RUN      ] EnemyEncounterTest.GetEncounterHasEnemy
+[       OK ] EnemyEncounterTest.GetEncounterHasEnemy (4 ms)
+[ RUN      ] EnemyEncounterTest.SingleEnemy
+[       OK ] EnemyEncounterTest.SingleEnemy (4 ms)
+[ RUN      ] EnemyEncounterTest.ThreeEnemies
+[       OK ] EnemyEncounterTest.ThreeEnemies (4 ms)
+[----------] 4 tests from EnemyEncounterTest (16 ms total)
+
+[----------] 4 tests from TrapEncounterTest
+[ RUN      ] TrapEncounterTest.EncounterNotEmpty
+[       OK ] TrapEncounterTest.EncounterNotEmpty (1 ms)
+[ RUN      ] TrapEncounterTest.GetEncounterHasLoop
+[       OK ] TrapEncounterTest.GetEncounterHasLoop (2 ms)
+[ RUN      ] TrapEncounterTest.SingleTrap
+[       OK ] TrapEncounterTest.SingleTrap (4 ms)
+[ RUN      ] TrapEncounterTest.ThreeTrap
+[       OK ] TrapEncounterTest.ThreeTrap (4 ms)
+[----------] 4 tests from TrapEncounterTest (14 ms total)
+
+[----------] 2 tests from TrapEncounterFactoryTest
+[ RUN      ] TrapEncounterFactoryTest.EncounterNotEmpty
+[       OK ] TrapEncounterFactoryTest.EncounterNotEmpty (1 ms)
+[ RUN      ] TrapEncounterFactoryTest.GetEncounterHasTrap
+[       OK ] TrapEncounterFactoryTest.GetEncounterHasTrap (3 ms)
+[----------] 2 tests from TrapEncounterFactoryTest (5 ms total)
+
+[----------] 2 tests from LootEncounterFactoryTest
+[ RUN      ] LootEncounterFactoryTest.EncounterNotEmpty
+[       OK ] LootEncounterFactoryTest.EncounterNotEmpty (4 ms)
+[ RUN      ] LootEncounterFactoryTest.GetEncounterHasLoot
+[       OK ] LootEncounterFactoryTest.GetEncounterHasLoot (3 ms)
+[----------] 2 tests from LootEncounterFactoryTest (7 ms total)
+
+[----------] 2 tests from EnemyEncounterFactoryTest
+[ RUN      ] EnemyEncounterFactoryTest.EncounterNotEmpty
+[       OK ] EnemyEncounterFactoryTest.EncounterNotEmpty (2 ms)
+[ RUN      ] EnemyEncounterFactoryTest.GetEncounterHasEnemy
+[       OK ] EnemyEncounterFactoryTest.GetEncounterHasEnemy (3 ms)
+[----------] 2 tests from EnemyEncounterFactoryTest (5 ms total)
+
+[----------] Global test environment tear-down
+[==========] 65 tests from 15 test suites ran. (560 ms total)
+[  PASSED  ] 65 tests.
+==22==
+==22== HEAP SUMMARY:
+==22==     in use at exit: 0 bytes in 0 blocks
+==22==   total heap usage: 8,184 allocs, 8,184 frees, 827,201 bytes allocated
+==22==
+==22== All heap blocks were freed -- no leaks are possible
+==22==
+==22== For lists of detected and suppressed errors, rerun with: -s
+==22== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
